@@ -40,7 +40,7 @@ const TechCard = ({ tech }: ITechCardProps) => {
             className="w-9 h-9 object-contain"
             loading="lazy"
           />
-          {tech.badge && (
+          {/* {tech.badge && (
             <span
               className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(
                 tech.badge,
@@ -48,7 +48,9 @@ const TechCard = ({ tech }: ITechCardProps) => {
             >
               {tech.badge}
             </span>
-          )}
+          )} */}
+
+          <span className = {`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(tech.badge)}`}>{tech.badge}</span>
         </div>
 
         <h3 className="text-lg font-bold text-gray-900 mt-4">{tech.name}</h3>
