@@ -7,11 +7,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-black text-xs shadow-sm">
+              <span className="w-8 h-8 rounded-lg bg-brand-gradient flex items-center justify-center text-white font-black text-xs shadow-sm">
                 DS
               </span>
               <span className="text-xl font-bold text-gray-950">
-                Dev<span className="text-pink-600">Stack</span>
+                Dev<span className="text-brand-gradient">Stack</span>
               </span>
             </div>
 

@@ -1,75 +1,44 @@
-# React + TypeScript + Vite
+# ⚡ DevStack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> An interactive developer workspace designed to curate, organize, and assemble modern tech stacks with real-time feedback.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📖 About The Project
 
-## React Compiler
+**DevStack** is a modern developer tool created to take the friction out of architectural decision-making. Developers can browse curated technologies across frontend, backend, database, and DevOps domains, compare options side-by-side, and assemble an optimized technology stack for their next project within a clean, reactive interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend Framework:** React 19
+* **Type System:** TypeScript
+* **Styling & UI:** Tailwind CSS, DaisyUI
+* **Build System:** Vite
+* **Notifications:** React-Toastify
+* **Icons:** React Icons
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ Key Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* **Interactive Stack Builder:** Browse diverse software categories—Frontend, Backend, Database, and DevOps—and add tools to your stack with persistent visual state indicators and dynamic card styling.
+* **Duplicate Detection & Toast Feedback:** Intelligent validation prevents duplicate entries. Powered by `react-toastify`, the app delivers instant notifications for additions, duplicate attempts, single removals, and full resets.
+* **Live Workspace Dashboard & Single-Variable Theming:** A dynamic sidebar updates stack metrics in real time with quick-delete options. The entire application is styled with a centralized CSS gradient theme that enables instant re-theming across all components from a single source variable.
 
-```
+---
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* **Node.js:** v18.0.0 or higher
+* **Package Manager:** npm, pnpm, or yarn
 
-```
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/devstack.git](https://github.com/your-username/devstack.git)
+   cd devstack

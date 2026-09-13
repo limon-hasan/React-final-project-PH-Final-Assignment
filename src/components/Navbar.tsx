@@ -1,4 +1,3 @@
-import Logo from "../assets/logo-text.png";
 import { FiMenu } from "react-icons/fi";
 
 const Navbar = () => {
@@ -17,11 +16,12 @@ const Navbar = () => {
           href="#"
           className="flex items-center gap-2 hover:opacity-90 transition"
         >
-          <img
-            src={Logo}
-            alt="Dev Stack Logo"
-            className="h-7 w-auto object-contain"
-          />
+          <span className="w-8 h-8 rounded-lg bg-brand-gradient flex items-center justify-center text-white font-black text-xs shadow-sm">
+            DS
+          </span>
+          <span className="text-xl font-bold text-gray-950 tracking-tight">
+            Dev<span className="text-brand-gradient">Stack</span>
+          </span>
         </a>
 
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
@@ -66,6 +66,7 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+
         <div className="flex items-center gap-2 md:gap-4">
           <button
             type="button"
@@ -76,7 +77,7 @@ const Navbar = () => {
 
           <button
             type="button"
-            className="bg-brand-gradient text-white text-xs md:text-sm font-medium px-3.5 md:px-5 py-1.5 md:py-2 rounded-full shadow-sm hover:opacity-90 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="bg-brand-gradient text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2 rounded-xl shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             Sign Up
           </button>
