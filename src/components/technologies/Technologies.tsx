@@ -12,15 +12,17 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
   const technologies = use(technologyPromise);
   const [selectedTech, setSelectedTech] = useState<ITechnology[]>([]);
 
+  //   let showAlreadyAdded : boolean = true;
   const handleSelectedTech = (tech: ITechnology) => {
     console.log(tech.name, "Card added");
     // setSelectedTech([...selectedTech, tech]);
-    const isAlreadyAdded = selectedTech.some((p) => tech.name == p.name);
-    if(isAlreadyAdded) {
-        alert('${item.name} is already added');
-        return;
-    }
-    
+    // const isAlreadyAdded = selectedTech.some((p) => tech.name == p.name);
+    // if (isAlreadyAdded) {
+    //   alert("${item.name} is already added");
+    //   return;
+    // }
+
+    // showAlreadyAdded = isAlreadyAdded;
     const showingSelected = [...selectedTech, tech];
     setSelectedTech(showingSelected);
     toast.success(`${tech.name} is selected!`, {
@@ -52,15 +54,21 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-            {technologies.map((tech) => (
-              <TechnologyCard
-                key={tech.id}
-                tech={tech}
-                // selectedTech={selectedTech}
-                // setSelectedTech={setSelectedTech}
-                onAddToStack={() => handleSelectedTech(tech)}
-              />
-            ))}
+            {technologies.map((tech) => {
+              const isAlreadyAdded = selectedTech.some(
+                (p) => tech.name == p.name,
+              );
+              return (
+                <TechnologyCard
+                  key={tech.id}
+                  tech={tech}
+                  // selectedTech={selectedTech}
+                  // setSelectedTech={setSelectedTech}
+                  onAddToStack={() => handleSelectedTech(tech)}
+                  isAlreadyAdded={isAlreadyAdded}
+                />
+              );
+            })}
           </div>
 
           <div className="lg:col-span-1">

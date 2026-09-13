@@ -6,6 +6,7 @@ interface ITechCardProps {
   //   selectedTech: ITechnology;
   //   setSelectedTech: Dispatch<SetStateAction<ITechnology>>;
   onAddToStack: () => void;
+  isAlreadyAdded: boolean;
 }
 // basd on UI demo , changing the color of badge
 const getBadgeStyle = (badge: string) => {
@@ -33,7 +34,11 @@ const getBadgeStyle = (badge: string) => {
   }
 };
 
-const TechnologyCard = ({tech, onAddToStack}: ITechCardProps) => {
+const TechnologyCard = ({
+  tech,
+  onAddToStack,
+  isAlreadyAdded,
+}: ITechCardProps) => {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full">
       <div>
@@ -79,11 +84,14 @@ const TechnologyCard = ({tech, onAddToStack}: ITechCardProps) => {
         </div>
       </div>
 
-      <button onClick={onAddToStack}
+      <button
+        onClick={onAddToStack}
         type="button"
-        className="w-full mt-6 bg-gray-950 hover:bg-black text-white py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition active:scale-[0.98] cursor-pointer"
+        disabled={isAlreadyAdded}
+        className={`w-full mt-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition
+        ${isAlreadyAdded ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-gray-950 hover:bg-black text-white active:scale-[0.98] cursor-pointer"}`}
       >
-        Add to Stack
+        {isAlreadyAdded ? "Added to a Stack" : "Add to Stack"}
       </button>
     </div>
   );
