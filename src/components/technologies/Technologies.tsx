@@ -2,6 +2,7 @@ import { use, useState } from "react";
 import type { ITechnology } from "../../types/technologyTypes";
 import TechnologyCard from "./TechnologyCard";
 import SelectedTechnologyCard from "./SelectedTechnologyCard";
+import { Bounce, toast } from "react-toastify";
 
 interface ITechnologyPromise {
   technologyPromise: Promise<ITechnology[]>;
@@ -14,9 +15,25 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
   const handleSelectedTech = (tech: ITechnology) => {
     console.log(tech.name, "Card added");
     // setSelectedTech([...selectedTech, tech]);
+    const isAlreadyAdded = selectedTech.some((p) => tech.name == p.name);
+    if(isAlreadyAdded) {
+        alert('${item.name} is already added');
+        return;
+    }
+    
     const showingSelected = [...selectedTech, tech];
     setSelectedTech(showingSelected);
-    // console.log("Stack just added: ", selectedTech);
+    toast.success(`${tech.name} is selected!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
     console.log("Stack just added: ", showingSelected);
   };
 
