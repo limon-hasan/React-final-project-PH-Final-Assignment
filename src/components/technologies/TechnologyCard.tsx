@@ -1,14 +1,12 @@
 import type { ITechnology } from "../../types/technologyTypes";
-// import type { Dispatch, SetStateAction } from "react";
 
 interface ITechCardProps {
   tech: ITechnology;
-  //   selectedTech: ITechnology;
-  //   setSelectedTech: Dispatch<SetStateAction<ITechnology>>;
   onAddToStack: () => void;
   isAlreadyAdded: boolean;
 }
-// basd on UI demo , changing the color of badge
+
+// based on UI demo, changing the color of badge
 const getBadgeStyle = (badge: string) => {
   switch (badge) {
     case "Popular":
@@ -49,15 +47,6 @@ const TechnologyCard = ({
             className="w-9 h-9 object-contain"
             loading="lazy"
           />
-          {/* {tech.badge && (
-            <span
-              className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(
-                tech.badge,
-              )}`}
-            >
-              {tech.badge}
-            </span>
-          )} */}
 
           <span
             className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(tech.badge)}`}
@@ -87,11 +76,13 @@ const TechnologyCard = ({
       <button
         onClick={onAddToStack}
         type="button"
-        disabled={isAlreadyAdded}
-        className={`w-full mt-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition
-        ${isAlreadyAdded ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-gray-950 hover:bg-black text-white active:scale-[0.98] cursor-pointer"}`}
+        className={`w-full mt-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer active:scale-[0.98] ${
+          isAlreadyAdded
+            ? "bg-emerald-50 text-emerald-700 border border-emerald-300 hover:bg-emerald-100"
+            : "bg-gray-950 hover:bg-black text-white"
+        }`}
       >
-        {isAlreadyAdded ? "Added to a Stack" : "Add to Stack"}
+        {isAlreadyAdded ? "✓ Added to a Stack" : "Add to Stack"}
       </button>
     </div>
   );

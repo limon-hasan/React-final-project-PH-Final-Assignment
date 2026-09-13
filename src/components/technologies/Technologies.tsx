@@ -12,22 +12,30 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
   const technologies = use(technologyPromise);
   const [selectedTech, setSelectedTech] = useState<ITechnology[]>([]);
 
-  //   let showAlreadyAdded : boolean = true;
   const handleSelectedTech = (tech: ITechnology) => {
-    console.log(tech.name, "Card added");
-    // setSelectedTech([...selectedTech, tech]);
-    // const isAlreadyAdded = selectedTech.some((p) => tech.name == p.name);
-    // if (isAlreadyAdded) {
-    //   alert("${item.name} is already added");
-    //   return;
-    // }
+    const isAlreadyAdded = selectedTech.some((item) => item.id === tech.id);
 
-    // showAlreadyAdded = isAlreadyAdded;
+    if (isAlreadyAdded) {
+      toast.warn(`${tech.name} is already added to your stack!`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
     const showingSelected = [...selectedTech, tech];
     setSelectedTech(showingSelected);
+
     toast.success(`${tech.name} is selected!`, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -36,15 +44,15 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
       theme: "light",
       transition: Bounce,
     });
-    console.log("Stack just added: ", showingSelected);
   };
 
-  const handleRemoveTech = (tech : ITechnology) => {
-    const updateStack = selectedTech.filter((item) => tech.name != item.name);
+  const handleRemoveTech = (tech: ITechnology) => {
+    const updateStack = selectedTech.filter((item) => item.id !== tech.id);
     setSelectedTech(updateStack);
+
     toast.info(`${tech.name} is removed from the stack!`, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -53,11 +61,22 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
       theme: "light",
       transition: Bounce,
     });
-  }
+  };
+
   const handleRemoveAll = () => {
     setSelectedTech([]);
-    toast.warn(`All technologies removed from the selected stack!`);
-  }
+    toast.warn("All technologies removed from the selected stack!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
 
   return (
     <section id="technologies" className="py-12 md:py-16">
@@ -76,14 +95,12 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {technologies.map((tech) => {
               const isAlreadyAdded = selectedTech.some(
-                (p) => tech.name == p.name,
+                (item) => item.id === tech.id,
               );
               return (
                 <TechnologyCard
                   key={tech.id}
                   tech={tech}
-                  // selectedTech={selectedTech}
-                  // setSelectedTech={setSelectedTech}
                   onAddToStack={() => handleSelectedTech(tech)}
                   isAlreadyAdded={isAlreadyAdded}
                 />
@@ -94,8 +111,8 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
           <div className="lg:col-span-1">
             <SelectedTechnologyCard
               selectedTech={selectedTech}
-              onRemoveTech= {handleRemoveTech}
-              onRemoveAll = {handleRemoveAll}
+              onRemoveTech={handleRemoveTech}
+              onRemoveAll={handleRemoveAll}
             />
           </div>
         </div>

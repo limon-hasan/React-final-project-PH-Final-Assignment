@@ -4,10 +4,7 @@ interface ISelectedTechItemProps {
   tech: ITechnology;
   onRemoveTech: (item: ITechnology) => void;
 }
-const SelectedTechItem = ({
-  tech,
-  onRemoveTech,
-}: ISelectedTechItemProps) => {
+const SelectedTechItem = ({ tech, onRemoveTech }: ISelectedTechItemProps) => {
   return (
     <div>
       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors">
