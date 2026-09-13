@@ -39,6 +39,26 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
     console.log("Stack just added: ", showingSelected);
   };
 
+  const handleRemoveTech = (tech : ITechnology) => {
+    const updateStack = selectedTech.filter((item) => tech.name != item.name);
+    setSelectedTech(updateStack);
+    toast.info(`${tech.name} is removed from the stack!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  }
+  const handleRemoveAll = () => {
+    setSelectedTech([]);
+    toast.warn(`All technologies removed from the selected stack!`);
+  }
+
   return (
     <section id="technologies" className="py-12 md:py-16">
       <div className="container mx-auto px-4 md:px-8">
@@ -72,7 +92,11 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
           </div>
 
           <div className="lg:col-span-1">
-            <SelectedTechnologyCard selectedTech={selectedTech} />
+            <SelectedTechnologyCard
+              selectedTech={selectedTech}
+              onRemoveTech= {handleRemoveTech}
+              onRemoveAll = {handleRemoveAll}
+            />
           </div>
         </div>
       </div>
