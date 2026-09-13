@@ -1,6 +1,7 @@
-import { use } from "react";
+import { use, useState } from "react";
 import type { ITechnology } from "../../types/technologyTypes";
-import TechCard from "./TechCard";
+import TechnologyCard from "./TechnologyCard";
+import SelectedTechnologyCard from "./SelectedTechnologyCard";
 
 interface ITechnologyPromise {
   technologyPromise: Promise<ITechnology[]>;
@@ -8,6 +9,16 @@ interface ITechnologyPromise {
 
 const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
   const technologies = use(technologyPromise);
+  const [selectedTech, setSelectedTech] = useState<ITechnology[]>([]);
+
+  const handleSelectedTech = (tech: ITechnology) => {
+    console.log(tech.name, "Card added");
+    // setSelectedTech([...selectedTech, tech]);
+    const showingSelected = [...selectedTech, tech];
+    setSelectedTech(showingSelected);
+    // console.log("Stack just added: ", selectedTech);
+    console.log("Stack just added: ", showingSelected);
+  };
 
   return (
     <section id="technologies" className="py-12 md:py-16">
@@ -25,11 +36,18 @@ const Technologies = ({ technologyPromise }: ITechnologyPromise) => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {technologies.map((tech) => (
-              <TechCard key={tech.id} tech={tech} />
+              <TechnologyCard
+                key={tech.id}
+                tech={tech}
+                // selectedTech={selectedTech}
+                // setSelectedTech={setSelectedTech}
+                onAddToStack={() => handleSelectedTech(tech)}
+              />
             ))}
           </div>
 
           <div className="lg:col-span-1">
+            <SelectedTechnologyCard selectedTech={selectedTech} />
           </div>
         </div>
       </div>

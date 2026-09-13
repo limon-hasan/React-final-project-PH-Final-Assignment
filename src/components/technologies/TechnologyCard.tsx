@@ -1,7 +1,11 @@
-import type { Technology } from "../../types/technologyTypes";
+import type { ITechnology } from "../../types/technologyTypes";
+// import type { Dispatch, SetStateAction } from "react";
 
 interface ITechCardProps {
-  tech: Technology;
+  tech: ITechnology;
+  //   selectedTech: ITechnology;
+  //   setSelectedTech: Dispatch<SetStateAction<ITechnology>>;
+  onAddToStack: () => void;
 }
 // basd on UI demo , changing the color of badge
 const getBadgeStyle = (badge: string) => {
@@ -29,7 +33,7 @@ const getBadgeStyle = (badge: string) => {
   }
 };
 
-const TechCard = ({ tech }: ITechCardProps) => {
+const TechnologyCard = ({tech, onAddToStack}: ITechCardProps) => {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-full">
       <div>
@@ -50,7 +54,11 @@ const TechCard = ({ tech }: ITechCardProps) => {
             </span>
           )} */}
 
-          <span className = {`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(tech.badge)}`}>{tech.badge}</span>
+          <span
+            className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${getBadgeStyle(tech.badge)}`}
+          >
+            {tech.badge}
+          </span>
         </div>
 
         <h3 className="text-lg font-bold text-gray-900 mt-4">{tech.name}</h3>
@@ -71,7 +79,7 @@ const TechCard = ({ tech }: ITechCardProps) => {
         </div>
       </div>
 
-      <button
+      <button onClick={onAddToStack}
         type="button"
         className="w-full mt-6 bg-gray-950 hover:bg-black text-white py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition active:scale-[0.98] cursor-pointer"
       >
@@ -81,4 +89,4 @@ const TechCard = ({ tech }: ITechCardProps) => {
   );
 };
 
-export default TechCard;
+export default TechnologyCard;
