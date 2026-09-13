@@ -42,3 +42,26 @@
    ```bash
    git clone [https://github.com/your-username/devstack.git](https://github.com/your-username/devstack.git)
    cd devstack
+
+
+
+   ---
+
+## ❓ React Concepts & Questions
+
+### 1. What is JSX, and why is it used in React?
+JSX (JavaScript XML) is a syntax extension that allows us to write HTML-like markup directly inside JavaScript or TypeScript. It is used because it keeps the UI layout and component logic together in one place, making the code much cleaner, readable, and easier to maintain.
+
+---
+
+### 2. What is the difference between props and state?
+* **Props:** Read-only data passed down from a parent component to a child component. The child cannot change props directly.
+* **State:** Internal data managed locally inside a component. When state updates, React automatically re-renders the component to update the UI.
+
+---
+
+### 3. What does the useState hook do, and where did you use it in this project?
+The `useState` hook allows functional components to declare and track local reactive state.
+* **Where used in this project:** Used in `Technologies.tsx` to store and manage the user's selected tech stack:
+  ```tsx
+  const [selectedTech, setSelectedTech] = useState<ITechnology[]>([]);
