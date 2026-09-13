@@ -96,3 +96,21 @@
 ) : (
   items.map((item) => <Card data="{item}" key="{item.id}"/>)
 )}
+
+---
+
+### 7. How to pass data between Parent and Child components?
+
+* **Parent to Child (via Props):**
+  Data is passed downward directly as attributes (props) to the child component.
+  ```jsx
+  // Parent Component
+  function Parent() {
+    const user = "Alex";
+    return <Child name="{user}"/>;
+  }
+
+  // Child Component
+  function Child({ name }) {
+    return <h3>Hello, {name}!</h3>;
+  }
