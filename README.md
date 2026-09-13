@@ -96,6 +96,7 @@
 ) : (
   items.map((item) => <Card data="{item}" key="{item.id}"/>)
 )}
+```
 
 ---
 
